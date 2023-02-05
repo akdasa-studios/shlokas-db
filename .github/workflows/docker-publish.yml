@@ -5,7 +5,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ env.REGISTRY }}/${{ github.repository }}
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
   IMAGE_TAG: ${{ github.event.release.tag_name }}
 
 
