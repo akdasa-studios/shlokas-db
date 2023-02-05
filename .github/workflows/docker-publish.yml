@@ -1,18 +1,16 @@
-name: Docker
-
+name: Publish
 on:
-  push:
-    branches: [ "main" ]
+  release:
+    types: [released]
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-  IMAGE_TAG: 1.0.${{ github.run_number }}
+  REGISTRY:   ghcr.io
+  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_TAG:  ${{ github.event.release.tag_name }}
 
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,5 +33,5 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }},${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-
+          push: true
+          tags: ghcr.io/shlokas-db:latest
