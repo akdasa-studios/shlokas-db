@@ -1,0 +1,7 @@
+{
+    "_id": "org.couchdb.user:contentManager",
+    "type": "user",
+    "roles": ["contentManager"],
+    "name": "contentManager",
+    "password": "secure"
+}

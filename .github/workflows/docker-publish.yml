@@ -5,7 +5,8 @@ on:
 
 env:
   REGISTRY:   ghcr.io
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  DB_IMAGE_NAME: ghcr.io/${{ github.repository }}
+  BS_IMAGE_NAME: ghcr.io/${{ github.repository }}-bootstrap
   IMAGE_TAG:  ${{ github.event.release.tag_name }}
 
 
@@ -30,8 +31,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push "shlokas-db"
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }},${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.DB_IMAGE_NAME }}:${{ env.IMAGE_TAG }},${{ env.DB_IMAGE_NAME }}:latest
+
+      - name: Build and push "shlokas-db-bootstrap"
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ${{ env.BS_IMAGE_NAME }}:${{ env.IMAGE_TAG }},${{ env.BS_IMAGE_NAME }}:latest
