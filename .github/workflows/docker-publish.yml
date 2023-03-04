@@ -36,9 +36,11 @@ jobs:
         with:
           push: true
           tags: ${{ env.DB_IMAGE_NAME }}:${{ env.IMAGE_TAG }},${{ env.DB_IMAGE_NAME }}:latest
+          context: ./database
 
       - name: Build and push "shlokas-db-bootstrap"
         uses: docker/build-push-action@v4
         with:
           push: true
           tags: ${{ env.BS_IMAGE_NAME }}:${{ env.IMAGE_TAG }},${{ env.BS_IMAGE_NAME }}:latest
+          context: ./bootstrap
