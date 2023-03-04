@@ -15,6 +15,7 @@ services:
   db-bootstrap:
     build: ./bootstrap
     environment:
-      - HOST=http://dev:dev@database:5984
+      - BOOTSTRAP_DB_HOST=http://dev:dev@database:5984
     depends_on:
-      - database
+      database:
+        condition: service_healthy
