@@ -1,0 +1,20 @@
+services:
+  database:
+    build: ./database
+    ports:
+      - "5984:5984"
+    environment:
+      - COUCHDB_USER=dev
+      - COUCHDB_PASSWORD=dev
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5984/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  db-bootstrap:
+    build: ./bootstrap
+    environment:
+      - HOST=http://dev:dev@database:5984
+    depends_on:
+      - database

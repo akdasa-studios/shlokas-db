@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "couchdb-bootstrap": "^15.1.0"
+  }
+}
