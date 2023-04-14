@@ -1,7 +1,7 @@
 {
-    "_id": "org.couchdb.user:contentManager",
+    "_id": "org.couchdb.user:{{CONTENT_MANAGER_LOGIN}}",
     "type": "user",
     "roles": ["contentManager"],
-    "name": "contentManager",
-    "password": "secure"
+    "name": "{{CONTENT_MANAGER_LOGIN}}",
+    "password": "{{CONTENT_MANAGER_PASSWORD}}"
 }
