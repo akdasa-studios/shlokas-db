@@ -1,3 +1,6 @@
+name: 'shlokas'
+
+
 services:
   database:
     build: ./database
@@ -12,10 +15,6 @@ services:
       timeout: 10s
       retries: 5
 
-  db-bootstrap:
-    build: ./bootstrap
-    environment:
-      - BOOTSTRAP_DB_HOST=http://dev:dev@database:5984
-    depends_on:
-      database:
-        condition: service_healthy
+networks:
+  shlokas:
+    name: shlokas

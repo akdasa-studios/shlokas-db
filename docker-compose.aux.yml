@@ -1,0 +1,13 @@
+name: 'shlokas-aux'
+
+
+services:
+  db-bootstrap:
+    build: ./bootstrap
+    environment:
+      - BOOTSTRAP_DB_HOST=http://dev:dev@database:5984
+
+
+networks:
+  shlokas:
+    name: shlokas
