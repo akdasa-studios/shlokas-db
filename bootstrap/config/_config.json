@@ -8,6 +8,9 @@
     "httpd": {
         "enable_cors": "true"
     },
+    "chttpd": {
+        "authentication_handlers": "{chttpd_auth, cookie_authentication_handler}, {chttpd_auth, jwt_authentication_handler}, {chttpd_auth, default_authentication_handler}"
+    },
     "couchdb": {
         "single_node": "true"
     }
