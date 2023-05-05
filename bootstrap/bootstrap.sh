@@ -8,3 +8,6 @@ find . -type f | xargs sed -i "s/{{CONTENT_MANAGER_PASSWORD}}/${CONTENT_MANAGER_
 
 echo "Bootstrapping database ${BOOTSTRAP_DB_HOST}..."
 npx couchdb-bootstrap ${BOOTSTRAP_DB_HOST} config
+
+echo "Restarting database..."
+curl -X POST ${BOOTSTRAP_DB_HOST}/_node/nonode@nohost/_restart -H "Content-Type: application/json"

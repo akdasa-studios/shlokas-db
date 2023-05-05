@@ -5,7 +5,7 @@ services:
   db-bootstrap:
     build: ./bootstrap
     environment:
-      - BOOTSTRAP_DB_HOST=http://dev:dev@database:5984
+      - BOOTSTRAP_DB_HOST=http://db:db@db:5984
 
 
 networks:
